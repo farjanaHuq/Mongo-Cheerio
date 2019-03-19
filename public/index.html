@@ -34,13 +34,10 @@
             <a class="navbar-brand" href="index.html">Mongo Scraper</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <!-- <li><a href="#" class="btn" id="button-save-article" style="margin-right:10px">Saved Articles</a></li> -->
-            
-           
+            <li class="active"><a href="index.html">Home</a></li>          
           </ul>
           <button class="btn btn-primary" id="button-save-article"> Saved Articles</button>
-          <button class="btn btn-danger navbar-btn" id="button-save-article">Scrape New Article</button>
+          <button class="btn btn-danger navbar-btn" id="button-scrape-newArticle">Scrape New Article</button>
         </div>
       </nav>
   
@@ -52,89 +49,21 @@
               <img src="" alt="">
           </div>
 
-          <div class="row" id="saved-articles">
+          <div class="row" id="articles">
                 <!-- The saved articles gets appended here. -->
           </div>
           
         </div>
     </div> 
-<!--     
-    <div class="w3-container">
-        <h2>W3.CSS Modal</h2>
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
-      
-        <div id="id01" class="w3-modal">
-          <div class="w3-modal-content">
-            <div class="w3-container">
-              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-              <p>Some text. Some text. Some text.</p>
-              <p>Some text. Some text. Some text.</p>
-            </div>
-          </div>
-        </div>
-      </div> -->
-    <!-- <div class="container-modal"> -->
-       
-        <!-- Trigger the modal with a button
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button> -->
-      
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog"> -->
-          
-            <!-- Modal content -->
-            <!-- <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add a note to the article</h4>
-              </div>
-              <div class="modal-body" id="modal-add-note" type="text">
-                <p id="modal-add-note-p"></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
-              </div>
-            </div>
-            
-          </div> -->
-      <!-- </div>
-    </div>  -->
-
-
-    <!-- <div id="id01" class="modal" style="width: 800px; height:1000px">
-        <form class="modal-content animate">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-          </div>
-    
-          <div class="container">
-            <h3 style="text-align:center">Add a note to the article</h3>
-    
-            <div class="form-group" style="width: 700px">
-              <label for="name"><b>Your Note</b></label>
-              
-              <input class="form-control" id="modal-add-note" type="text" placeholder="" name="name" required>
-              <button class="btn btn-danger" id="add-resident-submit" type="submit">Submit</button>
-            </div>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                  class="btn btn-primary cancelbtn" style="margin-right: 60%">Cancel</button>
-                     
-          </div>
-      </form>
-    </div> -->
-
+     
      <!-- Add notes modal -->
-   <div class="modal" id="post-comment-modal">
+    <div class="modal" id="add-notes-modal">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-               <h4 class="modal-title">Post a Comment</h4>
+               <h4 class="modal-title">Add a note to the article</h4>
                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -160,19 +89,19 @@
       </div>
    </div>
 
-    <!-- View notes modal -->
-    <div class="modal" id="view-comments-modal">
+    <!-- Save notes modal -->
+    <div class="modal" id="saved-notes-modal">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
            <div class="modal-content">
   
               <!-- Modal Header -->
               <div class="modal-header">
-                 <h5 class="modal-title" id="comments-modal-title"></h5>
+                 <h5 class="modal-title" id="notes-modal-title"></h5>
                  <button type="button" class="close" data-dismiss="modal">×</button>
               </div>
   
               <!-- Modal body -->
-              <div class="modal-body" id="modal-comments-body">
+              <div class="modal-body" id="modal-notes-body">
                  <!-- append comments here -->
               </div>
   
@@ -185,7 +114,7 @@
         </div>
      </div>
   
-    <script src="./js/scrapeData.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
  
