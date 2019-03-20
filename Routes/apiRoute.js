@@ -22,7 +22,7 @@ router.get("/scrapeData", function(req, res) {
     
       // Makes an empty array for saving our scraped info
       var results = {};
-      
+     
           $("h3.cd__headline").each(function(i, element) {
             
             results.title = $(element).find("span.cd__headline-text").text();
@@ -45,7 +45,7 @@ router.get("/scrapeData", function(req, res) {
               // After looping through each element found, log the results to the console
               console.log(results);
           });
-          res.end()
+          res.end("Scrape Complete");
       });  
   });
   

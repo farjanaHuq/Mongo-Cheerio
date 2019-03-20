@@ -13,7 +13,7 @@ $( document ).ready(function() {
    })
    .then(function (scrapedArticles) {
     console.log('resArticles', scrapedArticles);
-    location.reload();
+    window.location.href = '/';
    })
    .catch(function (err) {
        console.error(err);
@@ -64,11 +64,11 @@ $( document ).ready(function() {
   });
   
   //onclick for Add Note button
-  $(document).on('click', '.add-note-btn', function (e) {
+  $(document).on("click", ".add-note-btn", function (e) {
     e.preventDefault();
 
     // set data-articleId value of submit button to the id the article being commented on
-    $('#submit-note').attr('data-articleId', $(this).attr('data-articleId'));
+    $("#submit-note").attr("data-articleId", $(this).attr('data-articleId'));
   });
 
   //onclick for the submit button in modal
@@ -83,14 +83,14 @@ $( document ).ready(function() {
         url: "/api/articles/" + id,
         method: "POST",
         data: {
-             title: $('#note-title').val().trim(),
-             body: $('#note-body').val().trim()
+             title: $("#note-title").val().trim(),
+             body: $("#note-body").val().trim()
           }
       })
-      .then(function (data) {
+      .then(function (resp) {
          // clear the text fields
-         $('#note-title').val('');
-         $('#note-body').val('');
+         $("#note-title").val('');
+         $("#note-body").val('');
        })
       .catch(function (err) {
              console.error(err);
@@ -115,22 +115,32 @@ $( document ).ready(function() {
        method: "GET"
       })
       .then(function (respArticle) {
-         console.log("respArticle with id ", respArticle.note);
-         
-         respArticle.note.forEach(element=> {
-            console.log("element ", element);
-         })
-         // respArticle.note.forEach(element => {
-         //     console.log(element);
-         //     $('#modal-notes-body').append(`
-         //        <div class="note-div" data-notetId="${element._id}" id="note-div-${element._id}">
-         //           <h4>${element.title}</h4>
-         //           <p>${element.body}</p>
-         //           <button class="btn btn-secondary delete-note-btn"
-         //              data-noteId="${element._id}">Delete Note</button>
-         //        </div>
-         //     `);
-         //  });
+         console.log("respArticle with id ", respArticle);
+         var data = respArticle.note;
+         console.log("data" ,data);
+         console.log("data length" , data.length);
+        //  for(var i=0; i<data.length; i++){
+        //      console.log(`note${i}, ${data[i]}`);
+            //  $('#modal-notes-body').append(`
+            //     <div class="note-div" data-notetId="${data._id}" id="note-div-${data._id}">
+            //        <h4>${data.title}</h4>
+            //         <p>${data.body}</p>
+            //        <button class="btn btn-primary delete-note-btn"
+            //            data-noteId="${data._id}">Delete Note</button>
+            //     </div>
+            //   `);
+        // }
+         data.forEach(element => {
+             console.log(element);
+             $('#modal-notes-body').append(`
+                <div class="note-div" data-notetId="${element._id}" id="note-div-${element._id}">
+                   <h4>${element.title}</h4>
+                   <p>${element.body}</p>
+                   <button class="btn btn-primary delete-note-btn"
+                      data-noteId="${element._id}">Delete Note</button>
+                </div>
+             `);
+          });
        })
        .catch(function (err) {
           console.error(err);
@@ -146,7 +156,7 @@ $( document ).ready(function() {
 
    // delete the comment in the database
    $.ajax({
-      url: "/api/comments/" + commentId,
+      url: "/api/notes/" + noteId,
       method: "DELETE"
    })
       .then(function (data) {
