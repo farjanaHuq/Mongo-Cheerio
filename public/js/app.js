@@ -20,12 +20,12 @@ $(document).ready(function () {
 
           $("#articles").append(`
             <div class="panel panel-default" >
-                    <div class="panel-body" >
+                    <div class="panel-body" style="background-color:#A9A9A9">
                       <div class="col-md-4">
                        <img src=${element.img} alt="" height=${200} width=${250}>  
                       </div> 
                       <div class="col-md-8" >
-                        <div class="row" id="saved-articles-title">${element.title} </div> 
+                        <div class="row" id="saved-articles-title"><b>HeadLine:</b> ${element.title} </div> 
                         <br>
                         <div class="row"> 
                             <span>                          
@@ -37,9 +37,11 @@ $(document).ready(function () {
                                 data-headline="${element.title}">Saved Notes</button>                
                           </span>
                         </div> 
+                        <br>
+                        <div class="row" id="saved-articles-link"><a href=${element.link}><b>Link:</b>${element.link}</a></div>
+                        
                       </div> 
-                    </div>
-                    <div class="panel-footer" id="saved-articles-link"><a href=${element.link}>Link: ${element.link}</a></div>
+                    </div>                  
             </div>
           `);
         });
@@ -72,25 +74,32 @@ $(document).ready(function () {
             $("#articles").html(" ");
             newArticles.data.forEach(element => {
 
-              $("#articles").append(`
-            <div class="panel panel-default" >
-                  <div class="panel-body" >
-                      <div class="col-md-4">
-                        <img src=${element.img} alt="" height=${400} width=${250}>  
-                      </div> 
-                      <div class="col-md-8" id="saved-articles-title">${element.title}
-                        <span>                          
-                            <button class="btn btn-primary add-note-btn" data-articleId=${element._id} 
-                            data-toggle="modal" data-target="#add-notes-modal">Add Note</button>
-                            <button class="btn btn-danger saved-note-btn" data-articleId="${element._id}"
-                              data-toggle="modal" data-target="#saved-notes-modal"
-                              data-headline="${element.title}">Saved Notes</button>                
-                        </span>
-                      </div> 
-                  </div>
-                  <div class="panel-footer" id="saved-articles-link">Link: ${element.link}</div>
-            </div>
-          `);
+            $("#articles").append(`
+              <div class="panel panel-default" >
+                      <div class="panel-body" style="background-color:#A9A9A9">
+                        <div class="col-md-4">
+                         <img src=${element.img} alt="" height=${200} width=${250}>  
+                        </div> 
+                        <div class="col-md-8" >
+                          <div class="row" id="saved-articles-title"><b>HeadLine:</b> ${element.title} </div> 
+                          <br>
+                          <div class="row"> 
+                              <span>                          
+                                <button class="btn btn-primary add-note-btn" data-articleId=${element._id} 
+                                data-toggle="modal" data-target="#add-notes-modal">Add Note</button>
+                                
+                                <button class="btn btn-danger saved-note-btn" data-articleId="${element._id}"
+                                  data-toggle="modal" data-target="#saved-notes-modal"
+                                  data-headline="${element.title}">Saved Notes</button>                
+                            </span>
+                          </div> 
+                          <br>
+                          <div class="row" id="saved-articles-link"><a href=${element.link}><b>Link:</b>${element.link}</a></div>
+                          
+                        </div> 
+                      </div>                  
+              </div>
+            `);
             });
           })
           .catch(function (err) {
@@ -158,17 +167,7 @@ $(document).ready(function () {
         var data = respArticle.note;
         console.log("data", data);
         console.log("data length", data.length);
-        //  for(var i=0; i<data.length; i++){
-        //      console.log(`note${i}, ${data[i]}`);
-        //  $('#modal-notes-body').append(`
-        //     <div class="note-div" data-notetId="${data._id}" id="note-div-${data._id}">
-        //        <h4>${data.title}</h4>
-        //        <p>${data.body}</p>
-        //        <button class="btn btn-primary delete-note-btn"
-        //            data-noteId="${data._id}">Delete Note</button>
-        //     </div>
-        //   `);
-        //}
+        
         data.forEach(element => {
           console.log(element);
           $('#modal-notes-body').append(`
@@ -176,7 +175,7 @@ $(document).ready(function () {
                    <h4>${element.title}</h4>
                    <p>${element.body}</p>
                    <button class="btn btn-primary delete-note-btn"
-                      data-noteId="${element._id}">Delete Note</button>
+                      data-noteId="${element._id}" style="flex:end">Delete Note</button>
                 </div>
              `);
         });

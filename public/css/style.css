@@ -1,7 +1,14 @@
-/* .container-fluid{
-    background-color:rgb(57, 132, 194);
-    color:antiquewhite;
-    font-size:14px;
-    font-weight: bold;
-    
-} */
+.jumbotron{
+    background-image: url(../image/newspaper.jpg) ;
+    width: 100%;
+    height: 400px;
+}
+
+#mongo-title{
+   color: 	#000000;
+   text-align:center;
+   font-weight: bold;
+   margin-top: 100px;
+   text-shadow: 2px 2px 8px #008B8B;
+
+}
