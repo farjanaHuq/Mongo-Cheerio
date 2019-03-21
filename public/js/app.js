@@ -17,25 +17,29 @@ $(document).ready(function () {
         //removes the html text
         $("#articles").html(" ");
         respArticles.data.forEach(element => {
- 
+
           $("#articles").append(`
             <div class="panel panel-default" >
                     <div class="panel-body" >
-                        <div class="col-md-8" id="saved-articles-title">${element.title}</div>
-                        <div class="col-md-4">
-                              <span>
-                            
+                      <div class="col-md-4">
+                       <img src=${element.img} alt="" height=${200} width=${250}>  
+                      </div> 
+                      <div class="col-md-8" >
+                        <div class="row" id="saved-articles-title">${element.title} </div> 
+                        <br>
+                        <div class="row"> 
+                            <span>                          
                               <button class="btn btn-primary add-note-btn" data-articleId=${element._id} 
                               data-toggle="modal" data-target="#add-notes-modal">Add Note</button>
                               
                               <button class="btn btn-danger saved-note-btn" data-articleId="${element._id}"
                                 data-toggle="modal" data-target="#saved-notes-modal"
-                                data-headline="${element.title}">Saved Notes</button>
-                         
-                            </span>
-                        </div>     
+                                data-headline="${element.title}">Saved Notes</button>                
+                          </span>
+                        </div> 
+                      </div> 
                     </div>
-                    <div class="panel-footer" id="saved-articles-link">Link: ${element.link}</div>
+                    <div class="panel-footer" id="saved-articles-link"><a href=${element.link}>Link: ${element.link}</a></div>
             </div>
           `);
         });
@@ -55,33 +59,43 @@ $(document).ready(function () {
       method: "GET"
     })
       .then(function (scrapedArticles) {
-        console.log('Scrape Articles', scrapedArticles);
-          //removes the html text
-        $("#articles").html(" ");
 
-        scrapedArticles.data.forEach(element => {
-          //console.log("Title", element.title );
-          $("#articles").append(`
+        console.log('Scrape Articles', scrapedArticles);
+        //removes the html text
+        axios({
+          url: "/api/articles",
+          method: "GET"
+        })
+          .then(function (newArticles) {
+            console.log('newArticles', newArticles);
+            //removes the html text
+            $("#articles").html(" ");
+            newArticles.data.forEach(element => {
+
+              $("#articles").append(`
             <div class="panel panel-default" >
-                    <div class="panel-body" >
-                        <div class="col-md-8" id="saved-articles-title"><b>${element.title}</b></div>
-                        <div class="col-md-4">
-                              <span>
-                            
-                              <button class="btn btn-primary add-note-btn" data-articleId=${element._id} 
-                              data-toggle="modal" data-target="#add-notes-modal">Add Note</button>
-                              
-                              <button class="btn btn-danger saved-note-btn" data-articleId="${element._id}"
-                                data-toggle="modal" data-target="#saved-notes-modal"
-                                data-headline="${element.title}">Saved Notes</button>
-                         
-                            </span>
-                        </div>     
-                    </div>
-                    <div class="panel-footer" id="saved-articles-link">Link: ${element.link}</div>
+                  <div class="panel-body" >
+                      <div class="col-md-4">
+                        <img src=${element.img} alt="" height=${400} width=${250}>  
+                      </div> 
+                      <div class="col-md-8" id="saved-articles-title">${element.title}
+                        <span>                          
+                            <button class="btn btn-primary add-note-btn" data-articleId=${element._id} 
+                            data-toggle="modal" data-target="#add-notes-modal">Add Note</button>
+                            <button class="btn btn-danger saved-note-btn" data-articleId="${element._id}"
+                              data-toggle="modal" data-target="#saved-notes-modal"
+                              data-headline="${element.title}">Saved Notes</button>                
+                        </span>
+                      </div> 
+                  </div>
+                  <div class="panel-footer" id="saved-articles-link">Link: ${element.link}</div>
             </div>
           `);
-        });
+            });
+          })
+          .catch(function (err) {
+            console.error(err);
+          });
       })
       .catch(function (err) {
         console.error(err);
