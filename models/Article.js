@@ -20,7 +20,7 @@ var ArticleSchema = new Schema({
     type: String,
    // required: true
   },
-  byLine: {
+  summary: {
     type: String,
    // required: true
   },

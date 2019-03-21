@@ -26,12 +26,14 @@ router.get("/scrapeData", function(req, res) {
        $("div.basicTeaser").each(function(i, element) {
             //console.log(element);
              results.title = $(element).find('div.teaserContentWrap').children('h2').text();
+             results.summary = $(element).find('div.teaserContentWrap').children('p').text();
              results.link = "https://www.dw.com/en/top-stories/culture/s-1441" + $(element).find('div.imgTeaserM').children('a').attr('href');
              results.img =  "https://www.dw.com/" + $(element).find('div.teaserImg').children('img').attr('src');
 
              console.log("Title",results.title);
              console.log("Link",results.link);
              console.log("Img",results.img);
+             console.log("Summary", results.summary);
             // // If this found element had both a title and a link
 
             // axios.get(results.link).then(function(resp) {
@@ -130,7 +132,18 @@ router.get("/scrapeData", function(req, res) {
     });
   });
 
-  
+  //Route for deleting article
+  router.delete('/articles', function (req, res) {
+    
+    //deletes notes from database
+    db.Article.remove()
+    .then(function (data) {
+          res.json(data);
+    })
+    .catch(function (err) {
+          res.json(err);
+    });
+  });
 
 
 module.exports = router;

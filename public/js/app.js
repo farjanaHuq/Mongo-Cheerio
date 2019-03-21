@@ -26,6 +26,7 @@ $(document).ready(function () {
                       </div> 
                       <div class="col-md-8" >
                         <div class="row" id="saved-articles-title"><b>HeadLine:</b> ${element.title} </div> 
+                        <div class="row" id="saved-articles-title"><b>Summary:</b> ${element.summary} </div> 
                         <br>
                         <div class="row"> 
                             <span>                          
@@ -82,6 +83,7 @@ $(document).ready(function () {
                         </div> 
                         <div class="col-md-8" >
                           <div class="row" id="saved-articles-title"><b>HeadLine:</b> ${element.title} </div> 
+                          <div class="row" id="saved-articles-title"><b>Summary:</b> ${element.summary} </div> 
                           <br>
                           <div class="row"> 
                               <span>                          
