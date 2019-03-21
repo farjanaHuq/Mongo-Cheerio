@@ -168,8 +168,7 @@ $(document).ready(function () {
         console.log("respArticle with id ", respArticle);
         var data = respArticle.note;
         console.log("data", data);
-        console.log("data length", data.length);
-        
+               
         data.forEach(element => {
           console.log(element);
           $('#modal-notes-body').append(`

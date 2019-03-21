@@ -133,17 +133,17 @@ router.get("/scrapeData", function(req, res) {
   });
 
   //Route for deleting article
-  router.delete('/articles', function (req, res) {
+  // router.delete('/articles', function (req, res) {
     
-    //deletes notes from database
-    db.Article.remove()
-    .then(function (data) {
-          res.json(data);
-    })
-    .catch(function (err) {
-          res.json(err);
-    });
-  });
+  //   //deletes notes from database
+  //   db.Article.remove()
+  //   .then(function (data) {
+  //         res.json(data);
+  //   })
+  //   .catch(function (err) {
+  //         res.json(err);
+  //   });
+  // });
 
 
 module.exports = router;
