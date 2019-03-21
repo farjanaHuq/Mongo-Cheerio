@@ -33,6 +33,15 @@ router.get("/scrapeData", function(req, res) {
              console.log("Link",results.link);
              console.log("Img",results.img);
             // // If this found element had both a title and a link
+
+            // axios.get(results.link).then(function(resp) {
+            //   var $ = cheerio.load(resp.data);
+            //   $("ul.smallList").each(function(i, element) {
+            //     results.byLine = $(element).find('li').children('strong').text();
+            //     console.log("byLine", results.byLine);
+            //   })
+
+            // })
            
               // Insert the data in the Article db
               db.Article.create(results)
@@ -45,29 +54,7 @@ router.get("/scrapeData", function(req, res) {
   
               // After looping through each element found, log the results to the console
               console.log(results);
-          });
-     
-          // $("h3.cd__headline").each(function(i, element) {
-            
-          //   results.title = $(element).find("span.cd__headline-text").text();
-          //   results.link = "https://www.cnn.com/opinions" + $(element).children("a").attr("href");
-          //   //results.img =  $(element).find('img').attr('src');
-          //   console.log("Title",results.title);
-          //   console.log("Link",results.link);
-          //   // If this found element had both a title and a link
-           
-          //     // Insert the data in the Article db
-          //     db.Article.create(results)
-          //       .then(function(dbArticle){
-          //           console.log(dbArticle);
-          //       })
-          //       .catch(function(err){
-          //         console.error(err);
-          //       });
-  
-          //     // After looping through each element found, log the results to the console
-          //     console.log(results);
-          // });
+          });       
           res.end("Scrape Complete");
       });  
   });
