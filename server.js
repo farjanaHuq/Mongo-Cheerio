@@ -26,9 +26,11 @@ app.use(express.static("public"));
 app.use("/api",route);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrapedb", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/scrapedb", { useNewUrlParser: true });
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
+mongoose.connect(MONGODB_URI);
 
 // Start the server
 app.listen(PORT, function() {
