@@ -55,7 +55,7 @@ $(document).ready(function () {
       method: "GET"
     })
       .then(function (scrapedArticles) {
-        console.log('resArticles', scrapedArticles);
+        console.log('Scrape Articles', scrapedArticles);
           //removes the html text
         $("#articles").html(" ");
 
@@ -146,26 +146,26 @@ $(document).ready(function () {
         console.log("data length", data.length);
         //  for(var i=0; i<data.length; i++){
         //      console.log(`note${i}, ${data[i]}`);
-         $('#modal-notes-body').append(`
-            <div class="note-div" data-notetId="${data._id}" id="note-div-${data._id}">
-               <h4>${data.title}</h4>
-               <p>${data.body}</p>
-               <button class="btn btn-primary delete-note-btn"
-                   data-noteId="${data._id}">Delete Note</button>
-            </div>
-          `);
+        //  $('#modal-notes-body').append(`
+        //     <div class="note-div" data-notetId="${data._id}" id="note-div-${data._id}">
+        //        <h4>${data.title}</h4>
+        //        <p>${data.body}</p>
+        //        <button class="btn btn-primary delete-note-btn"
+        //            data-noteId="${data._id}">Delete Note</button>
+        //     </div>
+        //   `);
         //}
-        // data.forEach(element => {
-        //   console.log(element);
-        //   $('#modal-notes-body').append(`
-        //         <div class="note-div" data-notetId="${element._id}" id="note-div-${element._id}">
-        //            <h4>${element.title}</h4>
-        //            <p>${element.body}</p>
-        //            <button class="btn btn-primary delete-note-btn"
-        //               data-noteId="${element._id}">Delete Note</button>
-        //         </div>
-        //      `);
-        // });
+        data.forEach(element => {
+          console.log(element);
+          $('#modal-notes-body').append(`
+                <div class="note-div" data-notetId="${element._id}" id="note-div-${element._id}">
+                   <h4>${element.title}</h4>
+                   <p>${element.body}</p>
+                   <button class="btn btn-primary delete-note-btn"
+                      data-noteId="${element._id}">Delete Note</button>
+                </div>
+             `);
+        });
       })
       .catch(function (err) {
         console.error(err);
