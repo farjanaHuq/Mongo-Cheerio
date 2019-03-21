@@ -28,7 +28,6 @@ router.get("/scrapeData", function(req, res) {
             results.title = $(element).find("span.cd__headline-text").text();
             results.link = "https://www.cnn.com/opinions" + $(element).children("a").attr("href");
             //results.img =  $(element).find('img').attr('src');
-            
             console.log("Title",results.title);
             console.log("Link",results.link);
             // If this found element had both a title and a link

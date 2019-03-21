@@ -9,6 +9,12 @@ var PORT = process.env.PORT || 3000;
 //fetching the route
 var route = require("./Routes/apiRoute");
 
+var exphbs = require("express-handlebars");
+
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+
 // Configure middleware
 // Use morgan logger for logging requests
 app.use(logger("dev"));
