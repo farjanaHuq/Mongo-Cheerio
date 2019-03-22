@@ -19,4 +19,4 @@
 
    5. axios
    
-   6. Bootstrap
+   6. Bootstrap, HTML, CSS
