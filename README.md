@@ -7,3 +7,14 @@
 
 * User can view the saved notes and also may delete the note.
 ![ResultImages](./public/image/savedNotes.png)
+
+* Technology used for this application
+   1. express
+
+   2. express-handlebars
+
+   3. mongoose
+
+   4. cheerio
+
+   5. axios
